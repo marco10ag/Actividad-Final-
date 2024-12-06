@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Promedio</title>
+    <script>
+        function calcularPromedio() {
+            // Obtener los valores ingresados por el usuario
+            let numeros = [];
+            for (let i = 1; i <= 5; i++) {
+                let num = parseFloat(document.getElementById('numero' + i).value);
+                if (!isNaN(num)) {
+                    numeros.push(num);
+                } else {
+                    alert('Por favor, ingresa un número válido para el número ' + i);
+                    return;
+                }
+            }
+
+            // Calcular el promedio
+            let suma = numeros.reduce((a, b) => a + b, 0);
+            let promedio = suma / numeros.length;
+
+            // Mostrar el resultado
+            document.getElementById('resultado').innerText = 'El promedio es: ' + promedio.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <h1>Calculadora de Promedio</h1>
+    <p>Ingresa 5 números:</p>
+    <div>
+        <input type="number" id="numero1" placeholder="Número 1"><br>
+        <input type="number" id="numero2" placeholder="Número 2"><br>
+        <input type="number" id="numero3" placeholder="Número 3"><br>
+        <input type="number" id="numero4" placeholder="Número 4"><br>
+        <input type="number" id="numero5" placeholder="Número 5"><br>
+        <button onclick="calcularPromedio()">Calcular Promedio</button>
+    </div>
+    <h2 id="resultado"></h2>
+</body>
+</html>

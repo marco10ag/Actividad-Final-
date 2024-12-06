@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Determinar si un Número es Par o Primo</title>
+    <script>
+        function esPar(numero) {
+            return numero % 2 === 0;
+        }
+
+        function esPrimo(numero) {
+            if (numero <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(numero); i++) {
+                if (numero % i === 0) {
+                    return false; // No es primo
+                }
+            }
+            return true; // Es primo
+        }
+
+        function determinar() {
+            let numero = parseInt(document.getElementById("numero").value);
+            let resultado = document.getElementById("resultado");
+            
+            // Validar si el número es un número válido
+            if (isNaN(numero)) {
+                resultado.innerHTML = "Por favor, ingresa un número válido.";
+                return;
+            }
+
+            let mensaje = `El número ${numero} es `;
+
+            // Verificar si es par
+            if (esPar(numero)) {
+                mensaje += "par";
+            } else {
+                mensaje += "impar";
+            }
+
+            // Verificar si es primo
+            if (esPrimo(numero)) {
+                mensaje += " y también es primo.";
+            } else {
+                mensaje += " y no es primo.";
+            }
+
+            // Mostrar el resultado
+            resultado.innerHTML = mensaje;
+        }
+    </script>
+</head>
+<body>
+    <h1>Determinar si un Número es Par o Primo</h1>
+    <label for="numero">Ingresa un número entero:</label>
+    <input type="number" id="numero" min="1">
+    <button onclick="determinar()">Determinar</button>
+
+    <h3>Resultado:</h3>
+    <p id="resultado"></p>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encontrar Mayor y Menor</title>
+    <script>
+        function encontrarMayorYMenor() {
+            // Inicialización de variables
+            let numeros = [];
+            let mayor;
+            let menor;
+
+            // Solicitar 5 números al usuario y guardarlos en el array
+            for (let i = 1; i <= 5; i++) {
+                let numero = parseInt(prompt("Ingrese el número " + i + ":"));
+
+                // Validar si es un número
+                if (isNaN(numero)) {
+                    document.getElementById("resultado").innerHTML = "Por favor, ingrese solo números enteros.";
+                    return;
+                }
+
+                numeros.push(numero);
+
+                // Inicializar mayor y menor con el primer número ingresado
+                if (i === 1) {
+                    mayor = numero;
+                    menor = numero;
+                } else {
+                    // Comparar para encontrar el mayor y el menor
+                    if (numero > mayor) {
+                        mayor = numero;
+                    }
+                    if (numero < menor) {
+                        menor = numero;
+                    }
+                }
+            }
+
+            // Mostrar los resultados en el HTML
+            document.getElementById("resultado").innerHTML = "El número mayor es: " + mayor + "<br>" + "El número menor es: " + menor;
+        }
+    </script>
+</head>
+<body>
+    <h1>Encontrar Mayor y Menor en una Lista de 5 Números</h1>
+    <button onclick="encontrarMayorYMenor()">Ingresar Números y Calcular</button>
+    <p id="resultado"></p>
+</body>
+</html>	

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversión Decimal a Número Entero</title>
+    <script>
+        function convertirAEntero() {
+            // Obtener el valor ingresado por el usuario
+            const numeroDecimal = parseFloat(document.getElementById('numero').value);
+
+            // Validar si el número ingresado es un valor válido
+            if (isNaN(numeroDecimal)) {
+                document.getElementById('resultado').innerText = "Por favor, ingresa un número decimal válido.";
+                return;
+            }
+
+            // Convertir el número decimal a entero sin redondear (eliminando la parte decimal)
+            const numeroEntero = parseInt(numeroDecimal);
+
+            // Mostrar el resultado
+            document.getElementById('resultado').innerText = `El número entero es: ${numeroEntero}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Conversión de Decimal a Número Entero</h1>
+    <p>Ingresa un número decimal:</p>
+    <input type="number" id="numero" step="any" placeholder="Ej. 7.8">
+    <button onclick="convertirAEntero()">Convertir a Entero</button>
+    
+    <h3>Resultado:</h3>
+    <div id="resultado"></div>
+</body>
+</html>

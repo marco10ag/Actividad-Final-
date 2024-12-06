@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números Pares</title>
+</head>
+<body>
+    <h2>Mostrar Números Pares hasta N</h2>
+    <label for="numero">Ingresa un número:</label>
+    <input type="number" id="numero" placeholder="Ej. 10">
+    <button onclick="mostrarPares()">Mostrar Pares</button>
+    
+    <h3>Resultado:</h3>
+    <div id="resultado"></div>
+
+    <script>
+        function mostrarPares() {
+            const numero = parseInt(document.getElementById("numero").value);
+            const resultado = document.getElementById("resultado");
+            resultado.innerHTML = ""; // Limpia el resultado previo
+
+            if (isNaN(numero) || numero < 1) {
+                resultado.innerHTML = "<p>Por favor, ingresa un número entero positivo mayor o igual a 1.</p>";
+                return;
+            }
+
+            let paresHTML = "<ul>";
+            for (let i = 2; i <= numero; i += 2) {
+                paresHTML += `<li>${i}</li>`; // Usar backticks para interpolación
+            }
+            paresHTML += "</ul>";
+
+            resultado.innerHTML = paresHTML;
+        }
+    </script>
+</body>
+</html>

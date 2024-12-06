@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar Divisores</title>
+    <script>
+        function mostrarDivisores() {
+            // Obtener el valor de N ingresado por el usuario
+            let N = parseInt(document.getElementById("numero").value);
+            let divisores = "";
+
+            // Validar que N sea un número mayor que 0
+            if (isNaN(N) || N <= 0) {
+                document.getElementById("resultado").innerHTML = "Por favor, ingrese un número entero mayor que 0.";
+                return;
+            }
+
+            // Encontrar y mostrar los divisores
+            for (let i = 1; i <= N; i++) {
+                if (N % i === 0) {
+                    divisores += i + " "; // Añadir divisor a la cadena
+                }
+            }
+
+            // Mostrar los divisores
+            document.getElementById("resultado").innerHTML = "Los divisores de " + N + " son: " + divisores;
+        }
+    </script>
+</head>
+<body>
+    <h1>Mostrar Divisores de un Número</h1>
+    <label for="numero">Ingrese un número entero N:</label>
+    <input type="number" id="numero" min="1">
+    <button onclick="mostrarDivisores()">Mostrar Divisores</button>
+    <p id="resultado"></p>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contar Positivos, Negativos y Ceros</title>
+</head>
+<body>
+    <h2>Contar Positivos, Negativos y Ceros en una Lista de 10 Números</h2>
+    <p>Ingresa 10 números separados por comas (ejemplo: 5, -3, 0, 7, -1, 0, 2, -8, 4, 0):</p>
+    <input type="text" id="numeros" placeholder="Ej. 5, -3, 0, 7, -1, 0, 2, -8, 4, 0">
+    <button onclick="contarNumeros()">Contar</button>
+    
+    <h3>Resultado:</h3>
+    <div id="resultado"></div>
+
+    <script>
+        function contarNumeros() {
+            const entrada = document.getElementById("numeros").value;
+            const numeros = entrada.split(",").map(num => parseInt(num.trim()));
+            const resultado = document.getElementById("resultado");
+            resultado.innerHTML = ""; // Limpia el resultado previo
+
+            // Validar que se ingresaron 10 números
+            if (numeros.length !== 10 || numeros.some(isNaN)) {
+                resultado.innerHTML = "<p>Por favor, ingresa exactamente 10 números válidos separados por comas.</p>";
+                return;
+            }
+
+            let positivos = 0, negativos = 0, ceros = 0;
+
+            // Contar positivos, negativos y ceros
+            numeros.forEach(num => {
+                if (num > 0) {
+                    positivos++;
+                } else if (num < 0) {
+                    negativos++;
+                } else {
+                    ceros++;
+                }
+            });
+
+            resultado.innerHTML = ` 
+                <p>Números positivos: ${positivos}</p>
+                <p>Números negativos: ${negativos}</p>
+                <p>Ceros: ${ceros}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
